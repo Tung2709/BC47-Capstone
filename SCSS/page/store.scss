@@ -1,0 +1,114 @@
+@import "../helper/mixin.scss";
+@import "../helper/color.scss";
+@import "../helper/font-sire.scss";
+
+.header__store{
+    background: rgba(74, 33, 33, 0.425);
+    color: $primary-color-h1;
+    .navbar-brand{
+        color: $primary-color-h1;
+        font-size: 40px;
+        &:hover{
+            color: blue;
+            transition: all .5s ease-in;
+        }
+    }
+    .collapse{
+        justify-content: flex-end;
+        .nav-link{
+            color: $primary-color-h1;
+            font-size: 25px;
+            margin-right: 20px;
+            &:hover{
+                color: $primary-hover-a;
+                transition: all .5s ease-out;
+            }
+        }
+    }
+    .cart {
+        button {
+            border: 1px solid white;
+        outline: none;
+        background-color:  rgba(74, 33, 33, 0.425);
+        color: white;
+        border-radius: 50%;
+        font-size: 20px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        }
+    }
+}
+.carousel{
+    .carousel__img{
+        background-image: url(../img/carousel-bg.jpg);
+        height: 100vh;
+        background-position: top;
+        background-repeat: no-repeat;
+        background-size: cover;
+        object-fit: cover;
+        filter: brightness(40%);
+        
+    }
+    .carousel__content{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0,0,0, 0.4);
+        width: 50%;
+        text-align: center;
+        color: $primary-color-h1;
+        border: 2px solid none;
+        box-shadow: 0 0 20px white;
+        border-radius: 20px;
+        padding: 50px;
+        .carousel__title{
+            font-size: $primary-fs-h1;
+            font-style: italic;
+            font-weight: bold;
+        }
+        .carousel__text{
+            font-size: $primary-fs-p;
+        }
+    }
+}
+.footer{
+    background: linear-gradient(to left, rgba(128, 128, 128, 0.477), #333 50%, rgba(0, 0, 0, 0.274) 75%, gray 75%);
+    padding: 30px 0;
+    .card__li{
+        list-style: none;
+        color: $primary-color-p;
+        margin-bottom: 10px;
+        &::after{
+            content: "";
+            display: block;
+            width: 20px;
+            height: 2px;
+            background-color: white;
+        }
+    }
+
+    a {
+        @include a-card
+    }
+}
+.content__products{
+    text-align: center;
+    margin: 30px 0;
+    padding: 30px 0;
+    .content__title{
+
+        h1 {
+            font-size: $primary-fs-h1;
+            font-style: italic;
+            font-weight: bold;
+        }
+    }
+    .text__table {
+        font-size: $primary-fs-p;
+        color: rgba(0, 0, 0, 0.37);
+        background-color: rgba(128, 128, 128, 0.34);
+        font-style: italic;
+    }
+}

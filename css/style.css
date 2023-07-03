@@ -1,0 +1,46 @@
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#tbody {
+  background-image: url(../image/Hinh-nen.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 50px auto;
+  border: 2px solid none;
+  box-shadow: 0 0 10px 0 white;
+  border-radius: 20px;
+}
+.content .item {
+  color: white;
+  font-style: italic;
+}
+.content .item .img-fluid {
+  width: 200px;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+.content .item .conect {
+  display: block;
+  color: black;
+  font-size: 30px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.content .item .conect:hover {
+  color: red;
+  font-size: 40px;
+  transition: all 0.5s ease-in;
+}/*# sourceMappingURL=style.css.map */

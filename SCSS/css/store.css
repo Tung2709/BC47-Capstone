@@ -1,0 +1,111 @@
+.header__store {
+  background: rgba(74, 33, 33, 0.425);
+  color: white;
+}
+.header__store .navbar-brand {
+  color: white;
+  font-size: 40px;
+}
+.header__store .navbar-brand:hover {
+  color: blue;
+  transition: all 0.5s ease-in;
+}
+.header__store .collapse {
+  justify-content: flex-end;
+}
+.header__store .collapse .nav-link {
+  color: white;
+  font-size: 25px;
+  margin-right: 20px;
+}
+.header__store .collapse .nav-link:hover {
+  color: blue;
+  transition: all 0.5s ease-out;
+}
+.header__store .cart button {
+  border: 1px solid white;
+  outline: none;
+  background-color: rgba(74, 33, 33, 0.425);
+  color: white;
+  border-radius: 50%;
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+}
+
+.carousel .carousel__img {
+  background-image: url(../img/carousel-bg.jpg);
+  height: 100vh;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
+  filter: brightness(40%);
+}
+.carousel .carousel__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 50%;
+  text-align: center;
+  color: white;
+  border: 2px solid none;
+  box-shadow: 0 0 20px white;
+  border-radius: 20px;
+  padding: 50px;
+}
+.carousel .carousel__content .carousel__title {
+  font-size: 50px;
+  font-style: italic;
+  font-weight: bold;
+}
+.carousel .carousel__content .carousel__text {
+  font-size: 20px;
+}
+
+.footer {
+  background: linear-gradient(to left, rgba(128, 128, 128, 0.477), #333 50%, rgba(0, 0, 0, 0.274) 75%, gray 75%);
+  padding: 30px 0;
+}
+.footer .card__li {
+  list-style: none;
+  color: white;
+  margin-bottom: 10px;
+}
+.footer .card__li::after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: white;
+}
+.footer a {
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}
+.footer a:hover {
+  color: blue;
+  transition: all 0.5s ease-in;
+}
+
+.content__products {
+  text-align: center;
+  margin: 30px 0;
+  padding: 30px 0;
+}
+.content__products .content__title h1 {
+  font-size: 50px;
+  font-style: italic;
+  font-weight: bold;
+}
+.content__products .text__table {
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.37);
+  background-color: rgba(128, 128, 128, 0.34);
+  font-style: italic;
+}/*# sourceMappingURL=store.css.map */

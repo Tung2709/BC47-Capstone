@@ -1,0 +1,43 @@
+@import './base/reset.scss';
+
+
+#tbody{
+    background-image: url(../image/Hinh-nen.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 50px auto;
+    border: 2px solid none;
+    box-shadow: 0 0 10px 0 white;
+    border-radius: 20px;
+    .item{
+        color: white;
+        font-style: italic;
+        
+        .img-fluid{
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .conect{
+            display: block;
+            color: black;
+            font-size: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            &:hover{
+                color: red;
+                font-size: 40px;
+                transition: all .5s ease-in;
+            }
+        } 
+    }
+    }

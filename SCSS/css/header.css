@@ -1,0 +1,24 @@
+.header__store {
+  background: rgba(91, 88, 88, 0);
+  color: white;
+}
+.header__store .navbar-brand {
+  color: white;
+  font-size: 40px;
+}
+.header__store .navbar-brand:hover {
+  color: blue;
+  transition: all 0.5s ease-in;
+}
+.header__store .collapse {
+  justify-content: flex-end;
+}
+.header__store .collapse .nav-link {
+  color: white;
+  font-size: 25px;
+  margin-right: 20px;
+}
+.header__store .collapse .nav-link:hover {
+  color: blue;
+  transition: all 0.5s ease-out;
+}/*# sourceMappingURL=header.css.map */

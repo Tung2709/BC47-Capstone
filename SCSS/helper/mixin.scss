@@ -1,0 +1,23 @@
+@import "../helper/color.scss";
+@import "../helper/font-sire.scss";
+@mixin a-card {
+  font-size: $primary-fs-a;
+  color: $primary-color-a;
+  text-decoration: none;
+  &:hover {
+    color: $primary-hover-a;
+    transition: all 0.5s ease-in;
+  }
+}
+@mixin img-card {
+  width: 300px;
+  height: 75vh;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.338);
+  &:hover{
+    transform: translateY(-20px);
+    transition: all .5s ease-out;
+  }
+}
+
