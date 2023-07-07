@@ -182,7 +182,7 @@
                 <div class="card-body">
                     <table class="table table-bordered table-hover myTable">
                         <thead class="text__th">
-                            <tr>
+                            <div>
                                 <th class="nowrap">
                                    Name
                                 </th>
@@ -194,7 +194,7 @@
                                 <th>Description</th>
                                 <th>Type</th>
                                 <th><em class="fa fa-cog"></em></th>
-                            </tr>
+                            </div>
                         </thead>
                         <tbody id="tableDanhSach">
 
@@ -203,6 +203,30 @@
                 </div>
     </section>
 
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              <ul>
+                <li class="card__li"><a href="#">Giới Thiệu Sản phẩm</a></li>
+                <li class="card__li"><a href="#">Chế Độ Trả Góp</a></li>
+                <li class="card__li"><a href="#">Tra Cứu Hóa Đơn</a></li>
+                <li class="card__li"><a href="#">Chính sách Bảo Hành</a></li>
+              </ul>
+            </div>
+            <div class="col-6">
+              <ul>
+                <li class="card__li">Kết Nối : <a href="#"><i class="fa-brands fa-facebook"></i> : Facebook</a> <a
+                    href="#"><i class="fa-brands fa-twitter"></i> : Twister</a></li>
+                <li class="card__li">Liên hệ : <a href="tel:+84812553688"><i class="fa-solid fa-phone"></i> 081.255.3688</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+
     <!-- Bs 4  -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -210,6 +234,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
         crossorigin="anonymous"></script>
+
+    <!-- AXIOS -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- JS -->
+        <script src="./js/model/products.js"></script>
+        <script src="./js/model/cart.js"></script>
+        <script src="./js/model/listCart.js"></script>
+        <script src="./js/model/listProducts.js"></script>
+        <script src="./js/main.js"></script>
 </body>
 
 </html>
