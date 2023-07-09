@@ -5,5 +5,7 @@ function listPro() {
 
   this.delPro = function () {};
 
-  this.editPro = function () {};
+  this.editPro = function () {
+    
+  };
 }

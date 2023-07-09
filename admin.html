@@ -61,7 +61,6 @@
                             <input type="text" name="name" id="name" class="form-control input-sm"
                                 placeholder="Tên Sản Phẩm">
                         </div>
-
                         <span class="sp-thongbao" id="tbTenSP"></span>
                     </div>
 
@@ -93,7 +92,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-key"></i></span>
                             </div>
-                            <input type="name" name="blackCamera" id="BlackCMR" class="form-control input-sm"
+                            <input type="name" name="backCamera" id="BackCMR" class="form-control input-sm"
                                 placeholder="Camera Sau (MP)">
                         </div>
                         <span class="sp-thongbao" id="tbBCMR"></span>
@@ -129,7 +128,7 @@
                             <input type="text" name="description" id="desc" class="form-control input-sm"
                                 placeholder="Description">
                         </div>
-                        <span class="sp-thongbao" id="tbDest"></span>
+                        <span class="sp-thongbao" id="tbDesc"></span>
                     </div>
                     <div class="form-group">
                         <div class="input-group">
@@ -137,9 +136,9 @@
                                 <span class="input-group-text"><i class="fa fa-briefcase"></i></span>
                             </div>
                             <select class="form-control" id="typeSP">
-                                <option value="Apple">Apple</option>
-                                <option value="SamSung">SamSung</option>
-                                <option value="Oppp">Oppp</option>
+                                <option value="thuong hieu">Chọn thương hiệu</option>
+                                <option value="iphone">Iphone</option>
+                                <option value="samsung">SamSung</option>
                             </select>
                         </div>
 
@@ -147,8 +146,9 @@
                     </div>
                 </form>
                 <div class="modal-footer" id="modal-footer">
-                    <button id="btnThemNV" type="button" class="btn btn-success">Thêm sản phẩm</button>
-                    <button id="btnCapNhat" type="button" class="btn btn-primary" data-dismiss="modal">Sửa Thông Tin</button>
+                    <button id="btnThemSP" type="button" class="btn btn-success">Thêm sản phẩm</button>
+                    <div id="capNhat">
+                    </div>
                     <button id="btnDong" type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
     
                 </div>
@@ -243,7 +243,8 @@
         <script src="./js/model/cart.js"></script>
         <script src="./js/model/listCart.js"></script>
         <script src="./js/model/listProducts.js"></script>
-        <script src="./js/main.js"></script>
+        <script src="./js/model/variables.js"></script>
+        <script src="./js/controller/admin.js"></script>
 </body>
 
 </html>
