@@ -34,13 +34,13 @@ function checkNumber(value, alert, name) {
   return true;
 }
 
-function checkNumberLetter(value, alert, name) {
-	var regex =/^(?=.*[0-9])(?=.*[a-zA-Z])(?!.*[^ a-zA-Z0-9]).*$/;
+function checkHaveNumber(value, alert, name) {
+	var regex =/\d/;
 	var number = regex.test(value);
 	if (!number) {
 	  getElement(alert).style.display = "block";
 	  getElement(alert).style.color = "white";
-	  getElement(alert).innerHTML = name + " phải có số và chữ";
+	  getElement(alert).innerHTML = name + " phải có số";
 	  return false;
 	}
 	getElement(alert).style.display = "none";
@@ -51,6 +51,7 @@ function checkNumberLetter(value, alert, name) {
 function checkLength(value, alert, name, minLength, maxLength) {
   if (value.length < minLength || value.length > maxLength) {
     document.querySelector(alert).style.display = "block";
+    getElement(alert).style.color = "white";
     document.querySelector(alert).innerHTML =
       name+" phải có độ dài từ " + minLength + " đến " + maxLength + " ký tự";
     return false;

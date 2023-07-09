@@ -167,14 +167,19 @@
             <div class="card text-center">
                 <!-- Header -->
                 <div class="card-header myCardHeader">
-                    <div class="row">
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-between">
                             <h3 class="text-left font-weight-bold">Danh sách sản phẩm</h3>
-                        </div>
-                        <div class="col-md-6 text-right">
-                            <button class="btn btn-primary" id="btnThem" data-toggle="modal" data-target="#myModal">Thêm
-                                sản phẩm ++</button>
-                        </div>
+                        
+                        <div class="d-flex align-items-start">
+                            <input class="form-control " id="searchPro" type="search" placeholder="Tìm tên sản phẩm" aria-label="Search">
+                            <button class="btn btn-outline-primary mr-1 " id="btnSearch" type="submit">Search</button>
+                            <select class="form-control mr-1" id="sapXep">
+                                <option value="0">Sắp xếp</option>
+                                <option value="1">Giá tăng dần</option>
+                                <option value="2">Giá thấp dần</option>
+                            </select>
+                            <button class="btn btn-primary" id="btnThem" style="width:100%" data-toggle="modal" data-target="#myModal">Thêm sản phẩm ++</button>
+                            </div>
                     </div>
                 </div>
 

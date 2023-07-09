@@ -8,15 +8,11 @@ var listProducts = new listPro();
 
 // call API lấy dữ liệu từ MOCKAPI render ra trang ADMIN-------------------
 
-function render() {
-  axios
-    .get(mockAPI)
-    .then(function (resp) {
-      listProducts.arrPro = resp.data;
-      var content = "";
-      for (var i = 0; i < listProducts.arrPro.length; i++) {
-        var product = listProducts.arrPro[i];
-        content += `
+function render(arr) {
+  var content = "";
+  for (var i = 0; i < arr.length; i++) {
+    var product = arr[i];
+    content += `
 		<tr>
     <td style="text-transform: capitalize;">${product.name}</td>
     <td>${product.price}</td>
@@ -32,15 +28,26 @@ function render() {
     </td>       
     </tr>
 		`;
-      }
-      getElement("#tableDanhSach").innerHTML = content;
+  }
+  getElement("#tableDanhSach").innerHTML = content;
+}
+function getAPI() {
+  axios
+    .get(mockAPI)
+    .then(function (resp) {
+      listProducts.arrPro = resp.data;
+      render(listProducts.arrPro);
     })
     .catch(function (err) {
       // Handle Error Here
       console.log(err);
     });
 }
-render();
+
+
+window.onload = function(){
+  getAPI();
+}
 
 // Validation--------------------------------------------------------------
 //Kiểm tra name , img , thương hiệu không được bỏ trống
@@ -63,36 +70,34 @@ getElement("#typeSP").onblur = function () {
   checkEmty(value, alert, name);
 };
 
-//Kiểm tra giá không được bỏ trống, phải là số , có giá từ 5tr đến 50tr
+//Kiểm tra giá không được bỏ trống, phải là số
 getElement("#price").onblur = function () {
   var name = getElement("#price").placeholder;
   var value = getElement("#price").value;
   var alert = "#spGiaSP";
   if (checkEmty(value, alert, name)) {
     if (checkNumber(value, alert, name)) {
-      checkValue(value, alert, name, 5000000, 50000000);
+      checkValue(value, alert, name, 1000, 50000);
     }
   }
 };
-//Kiểm tra desc không được bỏ trống, phải từ 10 đến 30 ký tự
+//Kiểm tra desc không được bỏ trống,
 getElement("#desc").onblur = function () {
   var name = getElement("#desc").placeholder;
   var value = getElement("#desc").value;
   var alert = "#tbDesc";
   if (checkEmty(value, alert, name)) {
-    checkLength(value, alert, name, 10, 30);
+    checkLength(value, alert, name, 10, 50);
   }
 };
 
-
-
-//Kiểm tra screen, backCamera, frontCamera không được bỏ trống, phải chữ và số
+//Kiểm tra screen, backCamera, frontCamera không được bỏ trống
 getElement("#screen").onblur = function () {
   var name = getElement("#screen").placeholder;
   var value = getElement("#screen").value;
   var alert = "#tbScreen";
   if (checkEmty(value, alert, name)) {
-    checkNumberLetter(value, alert, name);
+    checkHaveNumber(value, alert, name);
   }
 };
 getElement("#BackCMR").onblur = function () {
@@ -100,7 +105,7 @@ getElement("#BackCMR").onblur = function () {
   var value = getElement("#BackCMR").value;
   var alert = "#tbBCMR";
   if (checkEmty(value, alert, name)) {
-    checkNumberLetter(value, alert, name);
+    checkHaveNumber(value, alert, name);
   }
 };
 
@@ -109,12 +114,11 @@ getElement("#FrontCMR").onblur = function () {
   var value = getElement("#FrontCMR").value;
   var alert = "#tbFCMR";
   if (checkEmty(value, alert, name)) {
-    checkNumberLetter(value, alert, name);
+    checkHaveNumber(value, alert, name);
   }
 };
 
-// Add sản phẩm------------------------------------------------------------
-getElement("#btnThemSP").onclick = function () {
+function checkValid() {
   var name = getElement("#name").value;
   var price = getElement("#price").value;
   var screen = getElement("#screen").value;
@@ -134,32 +138,70 @@ getElement("#btnThemSP").onclick = function () {
     checkEmty(desc, "#tbDesc", getElement("#desc").placeholder) &
     checkEmty(type, "#tbTypeSP", getElement("#typeSP").placeholder);
 
-    if (checkEmty(price, "#spGiaSP", getElement("#price").placeholder)) {
-      valid &=checkNumber(value, alert, name)
-      if (checkNumber(price, "#spGiaSP", getElement("#price").placeholder)) 
-      {
-        valid &=checkValue(price, "#spGiaSP", getElement("#price").placeholder, 5000000, 50000000);
-      }
+  if (checkEmty(price, "#spGiaSP", getElement("#price").placeholder)) {
+    valid &= checkNumber(price, "#spGiaSP", getElement("#price").placeholder);
+    if (checkNumber(price, "#spGiaSP", getElement("#price").placeholder)) {
+      valid &= checkValue(
+        price,
+        "#spGiaSP",
+        getElement("#price").placeholder,
+        1000,
+        50000
+      );
     }
+  }
 
-    if (checkEmty(desc, "#tbDesc", getElement("#desc").placeholder)) {
-      valid &= checkLength(desc, "#tbDesc", getElement("#desc").placeholder, 10, 30);
-    }
+  if (checkEmty(desc, "#tbDesc", getElement("#desc").placeholder)) {
+    valid &= checkLength(
+      desc,
+      "#tbDesc",
+      getElement("#desc").placeholder,
+      10,
+      50
+    );
+  }
 
-    if (checkEmty(backCamera, "#tbBCMR", getElement("#BackCMR").placeholder)) {
-      valid &= checkNumberLetter(backCamera, "#tbBCMR", getElement("#BackCMR").placeholder);
-    }
-    if (checkEmty(frontCamera, "#tbFCMR", getElement("#FrontCMR").placeholder)) {
-      valid &= checkNumberLetter(frontCamera, "#tbFCMR", getElement("#FrontCMR").placeholder);
-    }
-    if (checkEmty(screen, "#tbScreen", getElement("#screen").placeholder)) {
-      valid &= checkNumberLetter(screen, "#tbScreen", getElement("#screen").placeholder);
-    }
+  if (checkEmty(backCamera, "#tbBCMR", getElement("#BackCMR").placeholder)) {
+    valid &= checkHaveNumber(
+      backCamera,
+      "#tbBCMR",
+      getElement("#BackCMR").placeholder
+    );
+  }
+  if (checkEmty(frontCamera, "#tbFCMR", getElement("#FrontCMR").placeholder)) {
+    valid &= checkHaveNumber(
+      frontCamera,
+      "#tbFCMR",
+      getElement("#FrontCMR").placeholder
+    );
+  }
+  if (checkEmty(screen, "#tbScreen", getElement("#screen").placeholder)) {
+    valid &= checkHaveNumber(
+      screen,
+      "#tbScreen",
+      getElement("#screen").placeholder
+    );
+  }
 
-    if(!valid){
-      return
-    }
+  console.log(valid);
 
+  return valid;
+}
+
+// Add sản phẩm------------------------------------------------------------
+getElement("#btnThemSP").onclick = function () {
+  if (!checkValid()) {
+    alert("Điền chính xác thông tin");
+    return;
+  }
+  var name = getElement("#name").value;
+  var price = getElement("#price").value;
+  var screen = getElement("#screen").value;
+  var backCamera = getElement("#BackCMR").value;
+  var frontCamera = getElement("#FrontCMR").value;
+  var img = getElement("#image").value;
+  var desc = getElement("#desc").value;
+  var type = getElement("#typeSP").value;
   var addPro = new products(
     (id = ""),
     name,
@@ -180,14 +222,14 @@ getElement("#btnThemSP").onclick = function () {
 
   promise
     .then(function () {
-      render();
+      getAPI();
+      render(listProducts.arrPro);
+      getElement("#btnDong").click();
       alert("Thêm thành công");
     })
     .catch(function () {
       alert("Thêm thất bại");
     });
-
-  render();
 };
 
 // Edit sản phẩm-----------------------------------------------------------
@@ -207,12 +249,16 @@ function btnEdit(id) {
 
       getElement(
         "#capNhat"
-      ).innerHTML = `<button id="btnCapNhat" type="button" onclick=editProduct(${arrPro[i].id}) class="btn btn-primary" data-dismiss="modal">Sửa Thông Tin</button>`;
+      ).innerHTML = `<button id="btnCapNhat" type="button" onclick="editProduct(${arrPro[i].id})" class="btn btn-primary" >Sửa Thông Tin</button>`;
     }
   }
 }
 
 function editProduct(idProduct) {
+  if (!checkValid()) {
+    alert("Điền chính xác thông tin");
+    return;
+  }
   var id = idProduct;
   var name = getElement("#name").value;
   var price = getElement("#price").value;
@@ -222,6 +268,8 @@ function editProduct(idProduct) {
   var img = getElement("#image").value;
   var desc = getElement("#desc").value;
   var type = getElement("#typeSP").value;
+
+  checkValid();
 
   var editPro = new products(
     id,
@@ -244,7 +292,9 @@ function editProduct(idProduct) {
 
   promise
     .then(function () {
-      render();
+      getElement("#btnDong").click();
+      getAPI();
+      render(listProducts.arrPro);
       alert("Cập nhật thành công");
     })
     .catch(function () {
@@ -268,7 +318,8 @@ function btnDelete(id) {
 
       promise
         .then(function () {
-          render();
+          getAPI();
+          render(listProducts.arrPro);
           alert("Xóa thành công");
         })
         .catch(function () {
@@ -280,17 +331,80 @@ function btnDelete(id) {
 
 // button đóng---------------------------------------------------------------
 getElement("#btnDong").onclick = function () {
-
-
-  getElement("#tbTenSP").style.display="none"
-  getElement("#spGiaSP").style.display="none"
-  getElement("#tbScreen").style.display="none"
-  getElement("#tbBCMR").style.display="none"
-  getElement("#tbFCMR").style.display="none"
-  getElement("#tbImage").style.display="none"
-  getElement("#tbDesc").style.display="none"
-  getElement("#tbTypeSP").style.display="none"
-
+  getElement("#tbTenSP").style.display = "none";
+  getElement("#spGiaSP").style.display = "none";
+  getElement("#tbScreen").style.display = "none";
+  getElement("#tbBCMR").style.display = "none";
+  getElement("#tbFCMR").style.display = "none";
+  getElement("#tbImage").style.display = "none";
+  getElement("#tbDesc").style.display = "none";
+  getElement("#tbTypeSP").style.display = "none";
 
   getElement("#fromList").reset();
+};
+
+// Tìm kiếm sản phẩm theo tên
+getElement("#btnSearch").onclick = function () {
+  var namePro = getElement("#searchPro").value.toLowerCase();
+  if (namePro) {
+    var sp = [];
+    for (var i = 0; i < listProducts.arrPro.length; i++) {
+      var namesp = listProducts.arrPro[i].name.toLowerCase();
+      if (namesp.indexOf(namePro) != -1) {
+        sp.push(listProducts.arrPro[i]);
+      }
+    }
+    if (Object.keys(sp).length) {
+      render(sp);
+    } else if (Object.keys(sp).length === 0) {
+      getElement("#tableDanhSach").innerHTML =
+        "KHÔNG CÓ KẾT QUẢ PHÙ HỢP OKE CHƯA!!!";
+    }
+  } else {
+    render(listProducts.arrPro)
+  }
+};
+
+getElement("#searchPro").onblur = function () {
+  var namePro = getElement("#searchPro").value.toLowerCase();
+  if (!namePro) {
+    render(listProducts.arrPro)
+  }
+};
+
+// sắp xếp sản phẩm---------------------------------------------------------------
+
+getElement("#sapXep").onchange = function () {
+  if (getElement("#sapXep").value == 1) {
+    var array=listProducts.arrPro
+    console.log
+    for (let i = 0; i < array.length - 1; i++) {
+      for (let j = i + 1; j < array.length; j++) {
+        if (+array[j].price < +array[i].price) {
+          var t = array[i];
+          array[i] = array[j];
+          array[j] = t;
+        }
+      }
+    }
+    render(array)
+  }
+  else if (getElement("#sapXep").value == 2) {
+    var arrlist = listProducts
+    var array=arrlist.arrPro
+    console.log
+    for (let i = 0; i < array.length - 1; i++) {
+      for (let j = i + 1; j < array.length; j++) {
+        if (+array[j].price > +array[i].price) {
+          var t = array[i];
+          array[i] = array[j];
+          array[j] = t;
+        }
+      }
+    }
+    render(array)
+  }
+  else{
+    getAPI()
+  }
 };
