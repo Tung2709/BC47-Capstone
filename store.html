@@ -18,34 +18,59 @@
 </head>
 
 <body id="tbody">
-  <div class="header__store fixed-top">
-    <div class="container">
-      <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="./index.html">Phone Project</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="./store.html">Store <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./admin.html">Admin</a>
-            </li>
-
-          </ul>
-        </div>
-        <div class="cart">
-          <button>
-
-            <i class="fa-solid fa-cart-shopping"></i>
+  <div class="fixed-top">
+    <div class="header__store">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg">
+          <a class="navbar-brand" href="./index.html">Phone Project</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
           </button>
-        </div>
-      </nav>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="./store.html">Store <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./admin.html">Admin</a>
+              </li>
+        
+            </ul>
+          </div>
+          <div class="cart">
+            <button data-toggle="modal" data-target="#myModal" id="cartShop">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </button>
+          </div>
+          <div class="number" id="countNumber">
+            0
+          </div>
+        </nav>
+      </div>
     </div>
-
+  </div>
+  <div class="modal" id="myModal">
+    <div class="shopItem">
+      <div class="container ">
+        <div class="row" id="shopItem">
+          <!-- <div class="col-3">
+            <div class="shopItem__content">
+              <div class="item__name"></div>
+              <div class="item__image"></div>
+              <div class="item__type"></div>
+              <div class="item__price"></div>
+              <div class="item__number"></div>
+            </div>
+          </div> -->
+        </div>
+        <div class="total__monney text-right">
+          <span id="totalMonney"></span>
+          <button class="btn btn-light" id="btnTinhTien">Tính Tiền</button>
+          <button class="btn btn-danger" data-dismiss="modal" id="btnDong">Đóng</button>
+        </div>
+      </div>
+    </div>
   </div>
   <section class="carousel">
     <div class="carousel__img"></div>
@@ -114,8 +139,12 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
     crossorigin="anonymous"></script>
-  <!-- Main JS  -->
-  <script src="./js/main.js"></script>
+  <!-- axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./js/DSSP.js"></script>
+  <!-- StorePage -->
+  <script src="./js/store.js"></script>
+
 </body>
 
 </html>
