@@ -169,4 +169,10 @@
 .shopItem__content .item__number span {
   font-size: 20px;
   margin: 0 20px;
+}
+
+.modal #totalMonney {
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
 }/*# sourceMappingURL=store.css.map */
