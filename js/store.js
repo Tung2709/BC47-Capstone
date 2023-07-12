@@ -91,8 +91,8 @@ const setLocal = (id) => {
 };
 
 const getLocal = () => {
-  const parseValue = JSON.parse(localStorage.getItem("dssp"));
   let arrShop2 = [];
+  const parseValue = JSON.parse(localStorage.getItem("dssp"));
   for (let i = 0; i < parseValue.length; i++) {
     let sp = parseValue[i];
     arrShop2 += `
@@ -109,11 +109,13 @@ const getLocal = () => {
               <span id="countItem">${sp.count}</span>
               <button class="addPlus" onclick="plusSP(${sp.id})">+</button>
               </div>
+              <div class= "text-center mt-3">
+              <button class= "btn btn-danger" onclick ="delSP(${sp.id})" >Xóa Sản Phẩm</button>
+              </div>
             </div>
           </div>
     `;
   }
-
   document.querySelector("#shopItem").innerHTML = arrShop2;
 };
 
@@ -180,11 +182,21 @@ const minusSP = (id) => {
 document.querySelector("#btnTinhTien").onclick = function () {
   const parseValue = JSON.parse(localStorage.getItem("dssp"));
   let total = 0;
+  let dem = 0;
   for (let i = 0; i < parseValue.length; i++) {
     let sp = parseValue[i];
     total += sp.price;
+    dem += sp.count;
   }
-  alert("Tổng tiền của bạn hết  " + total.toLocaleString() + " $");
+  alert(
+    "Bạn đã mua: " +
+      dem +
+      " sản phẩm" +
+      "----" +
+      "Tổng tiền của bạn hết  " +
+      total.toLocaleString() +
+      " $"
+  );
   document.querySelector("#shopItem").innerHTML = "";
   document.querySelector("#countNumber").innerHTML = 0;
   localStorage.clear();
@@ -273,4 +285,33 @@ const typeSP = () => {
       document.querySelector("#tableDanhSach").innerHTML = arrContent2;
     });
   }
+};
+
+const showInnerCart = () => {
+  const parseValue = JSON.parse(localStorage.getItem("dssp"));
+  if (parseValue == null) {
+    document.querySelector("#countNumber").innerHTML = 0;
+  } else {
+    let total = 0;
+    for (let i = 0; i < parseValue.length; i++) {
+      let sp = parseValue[i];
+      total += sp.count;
+    }
+    document.querySelector("#countNumber").innerHTML = total;
+  }
+};
+showInnerCart();
+
+const delSP = (id) => {
+  const parseValue = JSON.parse(localStorage.getItem("dssp"));
+  const countNumber = document.querySelector("#countNumber");
+  for (let i = 0; i < parseValue.length; i++) {
+    let sp = parseValue[i];
+    if (sp.id == id) {
+      parseValue.splice(i, 1);
+      countNumber.innerHTML = parseInt(countNumber.innerHTML) - sp.count;
+    }
+  }
+  localStorage.setItem("dssp", JSON.stringify(parseValue));
+  getLocal();
 };
