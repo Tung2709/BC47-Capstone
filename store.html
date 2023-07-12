@@ -18,33 +18,59 @@
 </head>
 
 <body id="tbody">
-  <div class="header__store fixed-top">
-    <div class="container">
-      <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="./index.html">Phone Project</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="./store.html">Store <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./admin.html">Admin</a>
-            </li>
-
-          </ul>
-        </div>
-        <div class="cart">
-          <button>
-            <i class="fa-solid fa-cart-shopping"></i>
+  <div class="fixed-top">
+    <div class="header__store">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg">
+          <a class="navbar-brand" href="./index.html">Phone Project</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
           </button>
-        </div>
-      </nav>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="./store.html">Store <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./admin.html">Admin</a>
+              </li>
+        
+            </ul>
+          </div>
+          <div class="cart">
+            <button data-toggle="modal" data-target="#myModal" id="cartShop">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </button>
+          </div>
+          <div class="number" id="countNumber">
+            0
+          </div>
+        </nav>
+      </div>
     </div>
-
+  </div>
+  <div class="modal" id="myModal">
+    <div class="shopItem">
+      <div class="container ">
+        <div class="row" id="shopItem">
+          <!-- <div class="col-3">
+            <div class="shopItem__content">
+              <div class="item__name"></div>
+              <div class="item__image"></div>
+              <div class="item__type"></div>
+              <div class="item__price"></div>
+              <div class="item__number"></div>
+            </div>
+          </div> -->
+        </div>
+        <div class="total__monney text-right">
+          <span id="totalMonney"></span>
+          <button class="btn btn-light" id="btnTinhTien">Tính Tiền</button>
+          <button class="btn btn-danger" data-dismiss="modal" id="btnDong">Đóng</button>
+        </div>
+      </div>
+    </div>
   </div>
   <section class="carousel">
     <div class="carousel__img"></div>
@@ -59,8 +85,31 @@
         <div class="content__title">
           <h1>THÔNG TIN SẢN PHẨM</h1>
         </div>
-        <div id="list_phone">
-          
+        <div class="select text-right">
+          <select id="typeSP" onchange="typeSP()" style="padding: 10px 20px; margin: 10px; border-radius: 10px;" >
+            <option value="All">All</option>
+            <option value="Iphone">Iphone</option>
+            <option value="Samsung">Samsung</option>
+          </select>
+        </div>
+        <div class="table_phone">
+          <table class="table table-bordered table-hover myTable">
+            <thead class="text__table">
+              <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Screen</th>
+                <th>BlackCamera</th>
+                <th>FrontCamera</th>
+                <th>Image</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th><em class="fa fa-cog"></em></th>
+              </tr>
+            </thead>
+            <tbody id="tableDanhSach">
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -97,9 +146,12 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
     crossorigin="anonymous"></script>
+  <!-- axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./js/DSSP.js"></script>
+  <!-- StorePage -->
+  <script src="./js/store.js"></script>
 
-  
- 
 </body>
 
 </html>
