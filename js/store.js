@@ -191,7 +191,6 @@ document.querySelector("#btnTinhTien").onclick = function () {
   location.reload();
 };
 
-
 // CLEAR GIỎ HÀNG KHI NHẤN THANH TOÁN
 // document.querySelector("#btnThanhToan").onclick= function(){
 //   localStorage.removeItem("dssp")
@@ -282,3 +281,18 @@ const typeSP = () => {
     });
   }
 };
+
+const displayCart = () => {
+  const parseValue = JSON.parse(localStorage.getItem("dssp"));
+  const countNumber = document.querySelector("#countNumber")
+  if(parseValue == null) {
+    countNumber.innerHTML = 0
+  } else {
+    for (let i = 0; i < parseValue.length; i++) {
+      let sp = parseValue[i]
+      countNumber.innerHTML = sp.count
+    }
+  }
+};
+displayCart()
+
