@@ -193,11 +193,11 @@ document.querySelector("#btnTinhTien").onclick = function () {
 
 
 // CLEAR GIỎ HÀNG KHI NHẤN THANH TOÁN
-document.querySelector("#btnThanhToan").onclick= function(){
-  localStorage.removeItem("dssp")
-  location.reload();
-  getLocal()
-}
+// document.querySelector("#btnThanhToan").onclick= function(){
+//   localStorage.removeItem("dssp")
+//   location.reload();
+//   getLocal()
+// }
 
 const typeSP = () => {
   let arrContent2 = [];
