@@ -1,5 +1,6 @@
 let arr = [];
 let arrShop = [];
+let listcart= new listCart();
 const header = document.querySelector(".header__store");
 window.addEventListener("scroll", () => {
   if (window.scrollY > 0) {
@@ -19,7 +20,9 @@ function getListAxios() {
     for (let i = 0; i < result.data.length; i++) {
       let sp = result.data[i];
       let dssp = new DSSP(sp.name, sp.img, sp.type, sp.price, 1, sp.id);
+      listcart.arrCart.push(dssp) 
       arr.push(dssp);
+      localStorage.setItem("arrSP", JSON.stringify(listcart.arrCart));
       arrContent += `<tr>
         <td>${sp.name}</td>
         <td>${sp.price}</td>
@@ -43,55 +46,47 @@ function getListAxios() {
 getListAxios();
 
 const setLocal = (id) => {
-  const parseValue = JSON.parse(localStorage.getItem("dssp"));
-  if (parseValue == null) {
-    const promise = axios({
-      url: `https://649e04749bac4a8e669e8718.mockapi.io/products/${id}`,
-      method: "GET",
-    });
-    promise.then(function (result) {
-      let sp = result.data;
-      arrShop.push({
-        id: sp.id,
-        name: sp.name,
-        img: sp.img,
-        type: sp.type,
-        price: sp.price,
-        count: 1,
-      });
-      localStorage.setItem("dssp", JSON.stringify(arrShop));
-    });
-  } else {
-    const promise = axios({
-      url: `https://649e04749bac4a8e669e8718.mockapi.io/products/${id}`,
-      method: "GET",
-    });
-    promise.then(function (result) {
-      const parseValue = JSON.parse(localStorage.getItem("dssp"));
-      let sp = result.data;
-      let check = parseValue.find((v) => v.id == sp.id);
-      if (check) {
-        check.price += sp.price;
-        check.count += 1;
-      } else {
-        parseValue.push({
-          id: sp.id,
-          name: sp.name,
-          img: sp.img,
-          type: sp.type,
-          price: sp.price,
-          count: 1,
-        });
+  let listSP = JSON.parse(localStorage.getItem("arrSP"));
+  if(!JSON.parse(localStorage.getItem("dssp"))){
+    console.log("chưa có")
+    for (let key in listSP) {
+      if (id == listSP[key].id) {
+        let sp = listSP[key];
+        let arrShop = new DSSP(sp.name, sp.img, sp.type, sp.price, 1, sp.id);
+        let arr = new listCart()
+        arr.arrCart.push(arrShop)
+        localStorage.setItem("dssp", JSON.stringify(arr.arrCart));
       }
-      localStorage.setItem("dssp", JSON.stringify(parseValue));
-    });
+    }
+  } else {
+    console.log("có")
+    let parseValue = JSON.parse(localStorage.getItem("dssp"))
+    console.log("trước", parseValue)
+    let index = parseValue.findIndex(v => v.id==id)
+    if(index!= -1){
+     parseValue[index].price += (parseValue[index].price/parseValue[index].count) ;
+        parseValue[index].count += 1;
+        localStorage.setItem("dssp", JSON.stringify(parseValue));
+    }else if(index==-1){
+      for (let key in listSP) {
+        if (id == listSP[key].id) {
+          let sp = listSP[key];
+          let arrShop = new DSSP(sp.name, sp.img, sp.type, sp.price, 1, sp.id);
+          parseValue.push(arrShop)
+          localStorage.setItem("dssp", JSON.stringify(parseValue));
+        }
+      }
+    }
+      // localStorage.setItem("dssp", JSON.stringify(parseValue));
   }
   const countNumber = document.querySelector("#countNumber");
   countNumber.innerHTML = parseInt(countNumber.innerHTML) + 1;
 };
 
 const getLocal = () => {
-  const parseValue = JSON.parse(localStorage.getItem("dssp"));
+  const parseValue = JSON.parse(localStorage.getItem("dssp"))
+    ? JSON.parse(localStorage.getItem("dssp"))
+    : [];
   let arrShop2 = [];
   for (let i = 0; i < parseValue.length; i++) {
     let sp = parseValue[i];
@@ -118,13 +113,24 @@ const getLocal = () => {
 };
 
 document.querySelector("#cartShop").onclick = function () {
-  const parseValue = JSON.parse(localStorage.getItem("dssp"));
-  if (parseValue == null) {
+  const parseValue = JSON.parse(localStorage.getItem("dssp"))
+    ? JSON.parse(localStorage.getItem("dssp"))
+    : [];
+  if (!parseValue.length) {
+    document.querySelector("#cartShop").setAttribute("data-target", "#my");
     alert("Vui lòng thêm sản phẩm vào giỏ hàng");
   } else {
+    document.querySelector("#cartShop").setAttribute("data-target", "#myModal");
+    const parseValue1 = JSON.parse(localStorage.getItem("dssp"));
+    let total = 0;
+    for (let i = 0; i < parseValue1.length; i++) {
+      let sp = parseValue1[i];
+      total += sp.price;
+    }
+    document.querySelector("#tongTien").innerHTML =
+      "Tổng tiền: " + total.toLocaleString() + " $";
     getLocal();
   }
-  document.querySelector("#totalMonney").innerHTML = "";
 };
 
 const plusSP = (id) => {
@@ -145,6 +151,14 @@ const plusSP = (id) => {
   }
   localStorage.setItem("dssp", JSON.stringify(arrShop3));
   getLocal();
+  const parseValue1 = JSON.parse(localStorage.getItem("dssp"));
+  let total = 0;
+  for (let i = 0; i < parseValue1.length; i++) {
+    let sp = parseValue1[i];
+    total += sp.price;
+  }
+  document.querySelector("#tongTien").innerHTML =
+    "Tổng tiền: " + total.toLocaleString() + " $";
   const countNumber = document.querySelector("#countNumber");
   countNumber.innerHTML = parseInt(countNumber.innerHTML) + 1;
 };
@@ -173,10 +187,25 @@ const minusSP = (id) => {
   }
   localStorage.setItem("dssp", JSON.stringify(arrShop3));
   getLocal();
+  const parseValue1 = JSON.parse(localStorage.getItem("dssp"));
+  let total = 0;
+  for (let i = 0; i < parseValue1.length; i++) {
+    let sp = parseValue1[i];
+    total += sp.price;
+  }
+  document.querySelector("#tongTien").innerHTML =
+    "Tổng tiền: " + total.toLocaleString() + " $";
   const countNumber = document.querySelector("#countNumber");
   countNumber.innerHTML = parseInt(countNumber.innerHTML) - 1;
 };
 
+document.querySelector("#btnDelAll").onclick = function () {
+  localStorage.removeItem("dssp");
+  countNumber.innerHTML = 0;
+  getLocal();
+  document.querySelector("#tongTien").innerHTML = "Tổng tiền: " + 0 + " $";
+  // location.reload();
+};
 document.querySelector("#btnTinhTien").onclick = function () {
   const parseValue = JSON.parse(localStorage.getItem("dssp"));
   let total = 0;
@@ -190,13 +219,6 @@ document.querySelector("#btnTinhTien").onclick = function () {
   localStorage.clear();
   location.reload();
 };
-
-// CLEAR GIỎ HÀNG KHI NHẤN THANH TOÁN
-// document.querySelector("#btnThanhToan").onclick= function(){
-//   localStorage.removeItem("dssp")
-//   location.reload();
-//   getLocal()
-// }
 
 const typeSP = () => {
   let arrContent2 = [];
@@ -284,15 +306,14 @@ const typeSP = () => {
 
 const displayCart = () => {
   const parseValue = JSON.parse(localStorage.getItem("dssp"));
-  const countNumber = document.querySelector("#countNumber")
-  if(parseValue == null) {
-    countNumber.innerHTML = 0
+  const countNumber = document.querySelector("#countNumber");
+  if (parseValue == null) {
+    countNumber.innerHTML = 0;
   } else {
     for (let i = 0; i < parseValue.length; i++) {
-      let sp = parseValue[i]
-      countNumber.innerHTML = sp.count
+      let sp = parseValue[i];
+      countNumber.innerHTML = sp.count;
     }
   }
 };
-displayCart()
-
+displayCart();

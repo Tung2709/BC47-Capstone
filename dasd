@@ -1,0 +1,79 @@
+[33mcommit fdc47bf2338b511de0aeccfd121dd953e36eb078[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Merge: 410ec96 fe9f3bb
+Author: Tung2709 <vuthanhtungautomation@gmail.com>
+Date:   Mon Jul 17 12:57:11 2023 +0700
+
+    Merge branch 'master' of https://github.com/Tung2709/BC47-Capstone
+
+[33mcommit 410ec9667e5cc43a760e8d319aa6f86e704b4ad2[m
+Author: Tung2709 <vuthanhtungautomation@gmail.com>
+Date:   Mon Jul 17 12:57:05 2023 +0700
+
+    update
+
+[33mcommit fe9f3bbba1bbcc09e016781c52ae8a6262193c5b[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: khoi <nguyenkhoi27051996@gmail.com>
+Date:   Sun Jul 16 13:25:12 2023 +0700
+
+    them phan hien thi gio hang
+
+[33mcommit 786a573085edfc26800d3fd61fb6a3b6b59f868c[m
+Author: khoi <nguyenkhoi27051996@gmail.com>
+Date:   Sun Jul 16 13:08:33 2023 +0700
+
+    them note phan chia phan
+
+[33mcommit e8174a95fa633684edf5a5dc88ee095561aca0a3[m
+Author: Tung2709 <vuthanhtungautomation@gmail.com>
+Date:   Wed Jul 12 17:34:31 2023 +0700
+
+    add button Thanh toán
+
+[33mcommit 8c86aa8af7c7486c8bc1233dd6bc2b9c53e493b0[m
+Merge: 4fd7109 862fe72
+Author: Tung2709 <vuthanhtungautomation@gmail.com>
+Date:   Wed Jul 12 17:05:22 2023 +0700
+
+    after conflict
+
+[33mcommit 4fd71092b2a191b0a4692438125085b792500193[m
+Author: Tung2709 <vuthanhtungautomation@gmail.com>
+Date:   Wed Jul 12 16:59:34 2023 +0700
+
+    update admin
+
+[33mcommit 862fe728cd8a0b86955c05df0a045256ba5d7770[m
+Author: khoi <nguyenkhoi27051996@gmail.com>
+Date:   Tue Jul 11 18:45:25 2023 +0700
+
+    complete
+
+[33mcommit 23d3cf45b38e3d7d324e2a3ded8cfbd1915f257b[m
+Author: khoi <nguyenkhoi27051996@gmail.com>
+Date:   Mon Jul 10 18:37:11 2023 +0700
+
+    page store
+
+[33mcommit 1700f0d755a2edb926a8a1b59bfc6fa59756c611[m
+Author: Tung2709 <vuthanhtungautomation@gmail.com>
+Date:   Mon Jul 10 03:29:58 2023 +0700
+
+    update admin.js
+
+[33mcommit 4fe9044c3257ad2d8c2b579a7e32e3a463a84675[m
+Author: Tung2709 <vuthanhtungautomation@gmail.com>
+Date:   Sun Jul 9 15:58:13 2023 +0700
+
+    update admin.js
+
+[33mcommit 592303e5368130a387d07f925b013c3ee0a5a9a3[m
+Author: Tung2709 <vuthanhtungautomation@gmail.com>
+Date:   Fri Jul 7 17:56:02 2023 +0700
+
+    update admin
+
+[33mcommit 2c48deb450642abb7b076c45c441b82bca862c0a[m
+Author: Tung2709 <vuthanhtungautomation@gmail.com>
+Date:   Mon Jul 3 19:48:56 2023 +0700
+
+    first commit

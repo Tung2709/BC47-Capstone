@@ -1,6 +1,6 @@
-function listItems() {
+function listCart() {
 
-	var arrItems = []
+	 this.arrCart = []
 
 
 	this.addCart= function(){

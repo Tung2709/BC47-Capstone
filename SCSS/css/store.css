@@ -1,136 +1,3 @@
-body {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-.header__store {
-  background: rgba(91, 88, 88, 0);
-  color: white;
-}
-.header__store .navbar-brand {
-  color: white;
-  font-size: 40px;
-}
-.header__store .navbar-brand:hover {
-  color: blue;
-  transition: all 0.5s ease-in;
-}
-.header__store .collapse {
-  justify-content: flex-end;
-}
-.header__store .collapse .nav-link {
-  color: white;
-  font-size: 25px;
-  margin-right: 20px;
-}
-.header__store .collapse .nav-link:hover {
-  color: blue;
-  transition: all 0.5s ease-out;
-}
-
-body {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background: rgb(238, 174, 202);
-  background: radial-gradient(circle, rgb(238, 174, 202) 0%, rgb(0, 0, 0) 100%);
-}
-
-.header {
-  margin-top: 100px;
-}
-.header h1 {
-  color: white;
-  text-align: center;
-  font-style: italic;
-  font-weight: bold;
-  font-size: 50px;
-  padding-top: 30px;
-}
-.header h1:hover {
-  color: black;
-  transition: all 0.5s ease-in-out;
-}
-
-.header__store {
-  background: rgba(83, 37, 62, 0.267);
-  color: white;
-}
-.header__store .navbar-brand {
-  color: white;
-  font-size: 40px;
-}
-.header__store .navbar-brand:hover {
-  color: blue;
-  transition: all 0.5s ease-in;
-}
-.header__store .collapse {
-  justify-content: flex-end;
-}
-.header__store .collapse .nav-link {
-  color: white;
-  font-size: 25px;
-  margin-right: 20px;
-}
-.header__store .collapse .nav-link:hover {
-  color: blue;
-  transition: all 0.5s ease-out;
-}
-
-.content {
-  max-width: 500px;
-  margin: 0 auto;
-}
-.content .bg__img__1 {
-  position: absolute;
-  top: 100px;
-  left: 30px;
-}
-.content .bg__img__1 img {
-  width: 300px;
-  height: 75vh;
-  object-fit: cover;
-  border-radius: 20px;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.338);
-}
-.content .bg__img__1 img:hover {
-  transform: translateY(-20px);
-  transition: all 0.5s ease-out;
-}
-.content .bg__img__2 {
-  position: absolute;
-  top: 100px;
-  right: 30px;
-}
-.content .bg__img__2 img {
-  width: 300px;
-  height: 75vh;
-  object-fit: cover;
-  border-radius: 20px;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.338);
-}
-.content .bg__img__2 img:hover {
-  transform: translateY(-20px);
-  transition: all 0.5s ease-out;
-}
-.content .modal {
-  background: rgb(74, 72, 73);
-  background: radial-gradient(circle, rgb(74, 72, 73) 0%, rgb(0, 0, 0) 100%);
-  height: 100vh;
-}
-.content .modal .modal-body {
-  max-width: 500px;
-  margin: 50px auto;
-}
-
-.myContent {
-  margin-top: 50px;
-}
-
 .header__store {
   background: rgba(74, 33, 33, 0.425);
   color: white;
@@ -224,7 +91,7 @@ body {
 }
 
 .footer {
-  background: linear-gradient(to left, rgba(128, 128, 128, 0.477), #333 50%, rgba(0, 0, 0, 0.274) 75%, gray 75%);
+  background-image: linear-gradient(to left, rgba(128, 128, 128, 0.477), #333 50%, rgba(0, 0, 0, 0.274) 75%, gray 100%);
   padding: 30px 0;
 }
 .footer .card__li {
@@ -232,21 +99,39 @@ body {
   color: white;
   margin-bottom: 10px;
 }
-.footer .card__li::after {
-  content: "";
-  display: block;
-  width: 20px;
-  height: 2px;
-  background-color: white;
-}
 .footer a {
   font-size: 20px;
   color: white;
   text-decoration: none;
+  display: inline-block;
 }
 .footer a:hover {
   color: blue;
   transition: all 0.5s ease-in;
+}
+.footer a::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+}
+.footer a.icon_contact {
+  margin: 5px;
+}
+.footer a.icon_contact::after {
+  display: none;
+}
+.footer span {
+  margin-right: 5px;
+  display: inline-block;
+}
+.footer span::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: white;
 }
 
 .content__products {
@@ -274,6 +159,7 @@ body {
   background-color: black;
   padding: 20px 10px;
   border-radius: 20px;
+  margin-right: 200px;
 }
 .shopItem__content .item__name {
   font-size: 30px;
@@ -303,8 +189,44 @@ body {
   margin: 0 20px;
 }
 
+.modal .container {
+  position: relative;
+}
+.modal .container #shopItem {
+  position: absolute;
+}
+.modal .container .total__monney {
+  position: absolute;
+  width: 100%;
+  bottom: -500px;
+  left: 800px;
+}
 .modal #totalMonney {
   color: white;
   font-size: 50px;
   font-weight: bold;
+}
+
+.backToTop {
+  width: 50px;
+  height: 50px;
+  background: #007bff;
+  border-radius: 8px;
+  line-height: 50px;
+  text-align: center;
+  display: block;
+  position: fixed;
+  right: 15px;
+  bottom: 50%;
+  color: white;
+  transition: all 0.2s;
+  box-shadow: -4px 4px 24px -10px #007bff;
+  cursor: pointer;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.cd-top--is-visible {
+  visibility: visible;
+  opacity: 1;
 }
